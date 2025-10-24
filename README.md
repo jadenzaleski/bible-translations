@@ -1,12 +1,16 @@
 # BibleTranslations
 <p align=center>
-  <img alt="Github Created At" src="https://img.shields.io/github/created-at/jadenzaleski/BibleTranslations?style=flat-square&color=orange">
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/jadenzaleski/BibleTranslations?style=flat-square">
+  <img alt="Github Created At" src="https://img.shields.io/github/created-at/jadenzaleski/bible-translations?style=flat-square&color=orange">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/jadenzaleski/bible-translations?style=flat-square">
 </p>
 
 <p>Here you can find all of The Holy Bible translations that are availabe at <a href="https://www.biblegateway.com">Bible Gateway</a>, in JSON and SQL format.
 Text is downloaded with the help of the <a href="https://github.com/daniel-tran/meaningless">meaningless</a> package. All files were generated with the <code>bible_gateway.py</code> script and feel free to create any issues or pull requests as needed.
 I will add more versions as they are supported by the <a href="https://github.com/daniel-tran/meaningless">meaningless</a> package.</p>
+
+> [!IMPORTANT]
+> This repository is **actively under development**. You can follow along in the <a href="https://github.com/users/jadenzaleski/projects/7">bible-translations project</a>. You’re welcome to open issues for feature ideas or bug reports.
+
 <h3>Available Translations:</h3>
 
  * **AMP**
