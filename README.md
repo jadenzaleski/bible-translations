@@ -1,7 +1,8 @@
 # BibleTranslations
 <p align=center>
   <img alt="Github Created At" src="https://img.shields.io/github/created-at/jadenzaleski/bible-translations?style=flat-square&color=orange">
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/jadenzaleski/bible-translations?style=flat-square">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/jadenzaleski/bible-translations?style=flat-square&label=last%20master%20commit">
+  <img alt="GitHub last commit (branch)" src="https://img.shields.io/github/last-commit/jadenzaleski/bible-translations/development?style=flat-square&label=last%20development%20commit">
 </p>
 
 <p>Here you can find all of The Holy Bible translations that are availabe at <a href="https://www.biblegateway.com">Bible Gateway</a>, in JSON and SQL format.
