@@ -9,7 +9,7 @@ maintainers = [
     { name = "Jaden Zaleski", email = "jadenzaleski@icloud.com" },
 ]
 readme = { file = "README.md", content-type = "text/markdown" }
-requires-python = ">=3.14"
+requires-python = ">=3.11"
 dependencies = [
     "aiohttp",
     "beautifulsoup4",
@@ -28,12 +28,15 @@ keywords = [
 ]
 # https://pypi.org/classifiers/
 classifiers = [
-    "Development Status :: 2 - Pre-Alpha",
+    "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "Topic :: Religion",
     "Topic :: Internet :: WWW/HTTP",
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",
 ]
 
