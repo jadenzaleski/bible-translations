@@ -30,9 +30,16 @@ def cli(ctx: click.Context):
         ctx.exit()
 
 
-def run_export(book_list, output_file, file_format):
+def run_export(book_list, output_file, file_format, flat=False):
     exporter = Exporter()
-    return exporter.export(book_list, file_format=file_format, folder_name=output_file)
+    return exporter.export(book_list, file_format=file_format, folder_name=output_file, flat=flat)
+
+
+flat_option = click.option(
+    "--flat",
+    is_flag=True,
+    help="Export a flat list of verse records instead of the nested book/chapter/verse structure.",
+)
 
 
 def get_translation_instance(name):
@@ -70,8 +77,9 @@ def get_translation_instance(name):
     show_default=True,
     help="Bible translation to use.",
 )
+@flat_option
 @click.option("--verbose", "-v", is_flag=True, help="Show verbose output.")
-def verse(reference, output_file, file_format, translation, verbose):
+def verse(reference, output_file, file_format, translation, flat, verbose):
     """Fetch and export a specific verse (e.g., 'John 3:16')."""
     translation_obj = get_translation_instance(translation)
     try:
@@ -99,7 +107,7 @@ def verse(reference, output_file, file_format, translation, verbose):
             progress.update(fetch_task, advance=1, description=f"Fetched {book_name} {chapter_num}:{verse_num}")
 
             export_task = progress.add_task(description="Exporting...", total=1)
-            output_path = run_export([book_obj], output_file, file_format)
+            output_path = run_export([book_obj], output_file, file_format, flat)
             progress.update(export_task, advance=1, description=f"Exported {book_name} {chapter_num}:{verse_num}")
 
         console.print(
@@ -138,8 +146,9 @@ def verse(reference, output_file, file_format, translation, verbose):
     show_default=True,
     help="Bible translation to use.",
 )
+@flat_option
 @click.option("--verbose", "-v", is_flag=True, help="Show verbose output.")
-def chapter(reference, output_file, file_format, translation, verbose):
+def chapter(reference, output_file, file_format, translation, flat, verbose):
     """Fetch and export a specific chapter (e.g., 'John 3')."""
     translation_obj = get_translation_instance(translation)
     try:
@@ -166,7 +175,7 @@ def chapter(reference, output_file, file_format, translation, verbose):
             progress.update(fetch_task, advance=1, description=f"Fetched {book_name} {chapter_num}")
 
             export_task = progress.add_task(description="Exporting...", total=1)
-            output_path = run_export([book_obj], output_file, file_format)
+            output_path = run_export([book_obj], output_file, file_format, flat)
             progress.update(export_task, advance=1, description=f"Exported {book_name} {chapter_num}")
 
         console.print(f"[green]Successfully exported [bold]{book_name} {chapter_num}[/bold] to {output_path}[/green]")
@@ -203,8 +212,9 @@ def chapter(reference, output_file, file_format, translation, verbose):
     show_default=True,
     help="Bible translation to use.",
 )
+@flat_option
 @click.option("--verbose", "-v", is_flag=True, help="Show verbose output.")
-def book(book_name, output_file, file_format, translation, verbose):
+def book(book_name, output_file, file_format, translation, flat, verbose):
     """Fetch and export a specific book (e.g., 'John')."""
     translation_obj = get_translation_instance(translation)
     try:
@@ -225,7 +235,7 @@ def book(book_name, output_file, file_format, translation, verbose):
             progress.update(fetch_task, completed=chapter_count, description=f"Fetched {normalized_book_name}")
 
             export_task = progress.add_task(description="Exporting...", total=None)
-            output_path = run_export([book_obj], output_file, file_format)
+            output_path = run_export([book_obj], output_file, file_format, flat)
             progress.update(export_task, total=1, completed=1, description=f"Exported {normalized_book_name}")
 
         console.print(f"[green]Successfully exported [bold]{normalized_book_name}[/bold] to {output_path}[/green]")
@@ -261,8 +271,9 @@ def book(book_name, output_file, file_format, translation, verbose):
     show_default=True,
     help="Bible translation to use.",
 )
+@flat_option
 @click.option("--verbose", "-v", is_flag=True, help="Show verbose output.")
-def books(output_file, file_format, translation, verbose):
+def books(output_file, file_format, translation, flat, verbose):
     """Fetch and export all books."""
     translation_obj = get_translation_instance(translation)
     try:
@@ -281,7 +292,7 @@ def books(output_file, file_format, translation, verbose):
             progress.update(fetch_task, completed=book_count, description=f"Fetched {book_count} books")
 
             export_task = progress.add_task(description="Exporting...", total=None)
-            output_path = run_export(books_obj, output_file, file_format)
+            output_path = run_export(books_obj, output_file, file_format, flat)
             progress.update(export_task, total=1, completed=1, description=f"Exported {book_count} books")
 
         console.print(
@@ -321,8 +332,9 @@ def books(output_file, file_format, translation, verbose):
     show_default=True,
     help="Bible translation to use.",
 )
+@flat_option
 @click.option("--verbose", "-v", is_flag=True, help="Show verbose output.")
-def selection(start_ref, end_ref, output_file, file_format, translation, verbose):
+def selection(start_ref, end_ref, output_file, file_format, translation, flat, verbose):
     """Fetch and export a selection (e.g., 'John 3:16' 'John 3:17')."""
     translation_obj = get_translation_instance(translation)
     try:
@@ -336,7 +348,7 @@ def selection(start_ref, end_ref, output_file, file_format, translation, verbose
             progress.update(fetch_task, completed=1, total=1, description=f"Fetched {start_ref} - {end_ref}")
 
             export_task = progress.add_task(description="Exporting...", total=None)
-            output_path = run_export(selection_obj, output_file, file_format)
+            output_path = run_export(selection_obj, output_file, file_format, flat)
             progress.update(export_task, total=1, completed=1, description=f"Exported {start_ref} - {end_ref}")
 
         console.print(f"[green]Successfully exported selection to {output_path}[/green]")

@@ -2,6 +2,7 @@ import json
 import tarfile
 import tempfile
 import zipfile
+from dataclasses import asdict
 from datetime import datetime
 from os import mkdir
 from os.path import exists
@@ -10,6 +11,7 @@ from typing import List, Literal
 
 from bible_translations.models.book import Book
 from bible_translations.models.info import Info
+from bible_translations.utils.flatten import flatten_books
 from bible_translations.utils.logger import logger
 
 
@@ -31,6 +33,7 @@ class Exporter:
         file_format: str = "json",
         compression: Literal[".tar.gz", ".tgz", ".zip"] = ".zip",
         folder_name: str | None = None,
+        flat: bool = False,
     ) -> Path:
         """
         Export books to the specified format.
@@ -39,6 +42,8 @@ class Exporter:
         :param compression: Type of compression to use (tar.gz, tgz, zip)
         :param books: List of Book objects to export
         :param file_format: Export format (json, txt, csv, xml)
+        :param flat: If True, export a single flat list of verse records instead of the
+            nested book/chapter/verse structure.
         :return: Path to the exported file
         """
 
@@ -70,7 +75,10 @@ class Exporter:
 
             # Create all the export files depending on parameters
             if file_format == "json":
-                self._export_json(books, parent_folder, book_info)
+                if flat:
+                    self._export_json_flat(books, parent_folder, book_info)
+                else:
+                    self._export_json(books, parent_folder, book_info)
             elif file_format == "sql":
                 raise NotImplementedError("SQL export not implemented yet")
             else:
@@ -90,9 +98,7 @@ class Exporter:
                 return Path(output_path)
 
     @staticmethod
-    def _export_json(books: List[Book], output_dir: str, info: Info):
-        logger.debug("Exporting JSON files...")
-        # Generate the info first
+    def _write_info_json(output_dir: str, info: Info) -> dict:
         info_data = {
             "translation": info.translation or "",
             "abbreviation": info.abbreviation or "",
@@ -101,9 +107,24 @@ class Exporter:
             "url": info.url or "",
             "fetch_date": info.fetch_date or "",
         }
-
         with open(output_dir + "/" + info.abbreviation.lower() + "_info.json", "w") as json_file:
             json.dump(info_data, json_file, indent=4)
+        return info_data
+
+    @staticmethod
+    def _export_json_flat(books: List[Book], output_dir: str, info: Info):
+        logger.debug("Exporting flat JSON...")
+        Exporter._write_info_json(output_dir, info)
+        records = [asdict(record) for record in flatten_books(books)]
+        file_path = Path(output_dir, info.abbreviation.lower() + "_flat.json")
+        with open(file_path, "w", encoding="utf-8") as json_file:
+            json.dump(records, json_file, indent=4, ensure_ascii=False)
+        logger.debug("Flat JSON export completed for %d verse records", len(records))
+
+    @staticmethod
+    def _export_json(books: List[Book], output_dir: str, info: Info):
+        logger.debug("Exporting JSON files...")
+        info_data = Exporter._write_info_json(output_dir, info)
 
         # Export each book as a separate JSON file
         for book in books:

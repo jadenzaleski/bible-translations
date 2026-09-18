@@ -17,6 +17,7 @@ def test_bt_verse():
     runner = CliRunner()
     result = runner.invoke(cli, ["verse", "--help"])  # type: ignore
     assert result.exit_code == 0
+    assert "--flat" in result.output
 
 
 def test_bt_chapter():
@@ -24,6 +25,7 @@ def test_bt_chapter():
     runner = CliRunner()
     result = runner.invoke(cli, ["chapter", "--help"])  # type: ignore
     assert result.exit_code == 0
+    assert "--flat" in result.output
 
 
 def test_bt_book():
@@ -31,6 +33,7 @@ def test_bt_book():
     runner = CliRunner()
     result = runner.invoke(cli, ["book", "--help"])  # type: ignore
     assert result.exit_code == 0
+    assert "--flat" in result.output
 
 
 def test_bt_books():
@@ -38,6 +41,7 @@ def test_bt_books():
     runner = CliRunner()
     result = runner.invoke(cli, ["books", "--help"])  # type: ignore
     assert result.exit_code == 0
+    assert "--flat" in result.output
 
 
 def test_bt_selection():
@@ -45,3 +49,4 @@ def test_bt_selection():
     runner = CliRunner()
     result = runner.invoke(cli, ["selection", "--help"])  # type: ignore
     assert result.exit_code == 0
+    assert "--flat" in result.output
