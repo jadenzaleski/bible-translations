@@ -4,6 +4,7 @@ from unittest.mock import AsyncMock, patch
 import pytest
 from bs4 import BeautifulSoup
 
+from bible_translations.translations.asv import ASV
 from bible_translations.translations.kjv import KJV
 
 FIXTURES_DIR = Path(__file__).parent / "fixtures" / "bible_gateway"
@@ -26,6 +27,21 @@ async def test_aget_chapter_parses_fixture_without_network():
     assert chapter.number == 3
     assert len(chapter.verses) == 36
     assert chapter.verses[15].number == 16
+    assert chapter.verses[15].text.startswith("For God so loved the world")
+
+
+@pytest.mark.asyncio
+async def test_aget_chapter_parses_paragraph_style_markup_without_network():
+    # ASV renders several verses per <p>, unlike KJV's one <p> per verse.
+    asv = ASV()
+    fixture_soup = _load_fixture("asv_john_3.html")
+    with patch(
+        "bible_translations.utils.fetch.bible_gateway.BibleGatewayClient.fetch",
+        new=AsyncMock(return_value=fixture_soup),
+    ):
+        chapter = await asv.aget_chapter("John", 3)
+    assert [v.number for v in chapter.verses] == list(range(1, 37))
+    assert chapter.verses[0].text.startswith("Now there was a man of the Pharisees")
     assert chapter.verses[15].text.startswith("For God so loved the world")
 
 

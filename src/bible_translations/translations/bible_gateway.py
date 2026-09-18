@@ -1,4 +1,5 @@
 import asyncio
+import re
 from contextlib import nullcontext
 
 from bible_translations.exceptions import BookNotFoundError, ChapterNotFoundError, VerseNotFoundError
@@ -173,25 +174,36 @@ class BibleGatewayTranslation(Translation):
         if not container:
             raise ChapterNotFoundError(f"Chapter not found: {book_name} {chapter_number}")
 
-        verses: list[Verse] = []
-        for verse in container.select("p"):
-            # Remove the chapter number if it's there
-            extra_content = verse.select(".chapternum")
-            if extra_content:
-                for element in extra_content:
-                    element.decompose()
+        # BibleGateway wraps every verse in <span class="text {Book}-{chapter}-{verse}">. Some translations
+        # render one <p> per verse (KJV), others render real paragraphs holding many verses (ASV), and a
+        # verse that spans paragraphs is split across several spans sharing the same class — so group by
+        # the verse class rather than by <p>.
+        verse_parts: dict[int, list[str]] = {}
+        for span in container.select("p span.text"):
+            verse_number = self._verse_number_from_classes(span.get("class", []), chapter_number)
+            if verse_number is None:
+                continue
+            for element in span.select(".chapternum, .versenum"):
+                element.decompose()
+            text = span.get_text(strip=True)
+            if text:
+                verse_parts.setdefault(verse_number, []).append(text)
 
-            verse_num_element = verse.select_one("sup.versenum")
-            if verse_num_element:
-                verse_number = int(verse_num_element.get_text(strip=True))
-                verse_num_element.decompose()
-            else:
-                verse_number = 1
+        if not verse_parts:
+            raise ChapterNotFoundError(f"Chapter not found: {book_name} {chapter_number}")
 
-            verse_text = verse.get_text(strip=True)
-            verses.append(Verse(number=verse_number, text=verse_text))
-
+        verses = [Verse(number=number, text=" ".join(parts)) for number, parts in sorted(verse_parts.items())]
         return Chapter(number=chapter_number, verses=verses)
+
+    _VERSE_CLASS_RE = re.compile(r"^(?P<book>.+)-(?P<chapter>\d+)-(?P<verse>\d+)$")
+
+    @classmethod
+    def _verse_number_from_classes(cls, classes: list[str], chapter_number: int) -> int | None:
+        for class_name in classes:
+            match = cls._VERSE_CLASS_RE.match(class_name)
+            if match and int(match.group("chapter")) == chapter_number:
+                return int(match.group("verse"))
+        return None
 
     async def aget_verse(
         self, book_name: str, chapter_number: int, verse_number: int, client: BibleGatewayClient | None = None

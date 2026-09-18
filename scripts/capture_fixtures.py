@@ -14,6 +14,7 @@ FIXTURES_DIR = Path(__file__).resolve().parent.parent / "tests" / "fixtures" / "
 QUERIES = {
     "kjv_john_3.html": "John+3&version=KJV",
     "kjv_john_3_16.html": "John+3:16&version=KJV",
+    "asv_john_3.html": "John+3&version=ASV",
 }
 
 
