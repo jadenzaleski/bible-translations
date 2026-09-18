@@ -15,6 +15,7 @@ QUERIES = {
     "kjv_john_3.html": "John+3&version=KJV",
     "kjv_john_3_16.html": "John+3:16&version=KJV",
     "asv_john_3.html": "John+3&version=ASV",
+    "web_romans_3.html": "Romans+3&version=WEB",
 }
 
 

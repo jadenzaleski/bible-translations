@@ -183,7 +183,7 @@ class BibleGatewayTranslation(Translation):
             verse_number = self._verse_number_from_classes(span.get("class", []), chapter_number)
             if verse_number is None:
                 continue
-            for element in span.select(".chapternum, .versenum"):
+            for element in span.select(self._NON_TEXT_SELECTOR):
                 element.decompose()
             text = span.get_text(strip=True)
             if text:
@@ -196,6 +196,9 @@ class BibleGatewayTranslation(Translation):
         return Chapter(number=chapter_number, verses=verses)
 
     _VERSE_CLASS_RE = re.compile(r"^(?P<book>.+)-(?P<chapter>\d+)-(?P<verse>\d+)$")
+
+    # Chapter/verse numbers plus footnote "[a]" and cross-reference "(A)" markers are markup, not scripture.
+    _NON_TEXT_SELECTOR = ".chapternum, .versenum, sup.footnote, sup.crossreference"
 
     @classmethod
     def _verse_number_from_classes(cls, classes: list[str], chapter_number: int) -> int | None:
@@ -232,8 +235,7 @@ class BibleGatewayTranslation(Translation):
         if not verse_span:
             raise VerseNotFoundError(f"Verse not found: {book_name} {chapter_number}:{verse_number}")
 
-        # Remove any nested content like chapter/verse numbers
-        for element in verse_span.select(".chapternum, .versenum"):
+        for element in verse_span.select(self._NON_TEXT_SELECTOR):
             element.decompose()
 
         for sc in verse_span.select("span.small-caps"):
