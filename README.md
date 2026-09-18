@@ -12,12 +12,10 @@ It also holds bundled translations in various formats available for download.
 
 Here are all possible translations, precompiled and bundled.
 
-| Translation | SQL | JSON | Copyright | Notes |
-|-------------|-----|------|-----------|-------|
-| KJV         | -   | -    | -         | -     |
-|             |     |      |           |       |
-|             |     |      |           |       |
-|             |     |      |           |       |
+| Translation | Abbreviation | Copyright     |
+|-------------|--------------|---------------|
+| KJV         | KJV          | Public Domain |
+| ASV         | ASV          | Public Domain |
 
 ## Install
 

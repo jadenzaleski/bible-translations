@@ -1,7 +1,9 @@
+from .asv import ASV
 from .kjv import KJV
 
 TRANSLATIONS = {
     "KJV": KJV,
+    "ASV": ASV,
 }
 
 
