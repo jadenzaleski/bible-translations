@@ -1,4 +1,10 @@
-VERSION = "0.1.0"  # MUST ALSO CHANGE IN pyproject.toml
+from importlib.metadata import PackageNotFoundError, version
+
+try:
+    VERSION = version("bible-translations")
+except PackageNotFoundError:
+    # Package isn't installed (e.g. running from a raw source checkout) — fall back.
+    VERSION = "0.0.0-dev"
 
 BIBLE_GATEWAY_BASE_URL = "https://www.biblegateway.com/passage/"
 
