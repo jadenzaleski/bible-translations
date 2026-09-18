@@ -1,0 +1,26 @@
+name: Docs
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Configure git identity for gh-pages commits
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.14"
+      - name: Install docs dependencies
+        run: pip install -e ".[docs]"
+      - name: Deploy docs to GitHub Pages
+        run: mkdocs gh-deploy --force --clean
