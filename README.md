@@ -1,16 +1,41 @@
 # bible-translations
 
 <p align=center>
+  <a href="https://github.com/jadenzaleski/bible-translations/actions/workflows/ci.yml">
+    <img alt="CI" src="https://img.shields.io/github/actions/workflow/status/jadenzaleski/bible-translations/ci.yml?branch=master&style=flat-square&label=CI">
+  </a>
+  <a href="https://github.com/jadenzaleski/bible-translations/actions/workflows/lint.yml">
+    <img alt="Lint" src="https://img.shields.io/github/actions/workflow/status/jadenzaleski/bible-translations/lint.yml?branch=master&style=flat-square&label=lint">
+  </a>
+  <a href="https://github.com/jadenzaleski/bible-translations/releases/latest">
+    <img alt="GitHub Release" src="https://img.shields.io/github/v/release/jadenzaleski/bible-translations?style=flat-square">
+  </a>
+  <a href="https://pypi.org/project/bible-translations/">
+    <img alt="PyPI - Version" src="https://img.shields.io/pypi/v/bible-translations?style=flat-square">
+  </a>
+  <a href="https://pypi.org/project/bible-translations/">
+    <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/bible-translations?style=flat-square">
+  </a>
+  <a href="https://pypi.org/project/bible-translations/">
+    <img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dm/bible-translations?style=flat-square">
+  </a>
+  <a href="LICENSE">
+    <img alt="License" src="https://img.shields.io/github/license/jadenzaleski/bible-translations?style=flat-square">
+  </a>
   <img alt="Github Created At" src="https://img.shields.io/github/created-at/jadenzaleski/bible-translations?style=flat-square&color=orange">
   <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/jadenzaleski/bible-translations?style=flat-square">
 </p>
 
-This repo holds the python package for pulling many possible bible translations off the internet.
-It also holds bundled translations in various formats available for download.
+A Python package and CLI for fetching Bible translations on demand. This project does not
+bundle or redistribute any Bible text — it fetches publicly available, public-domain
+translations from [BibleGateway](https://www.biblegateway.com) at request time, either as
+Python objects (via the API) or as exported JSON files (via the CLI).
 
-## Download
+## Documentation
 
-Here are all possible translations, precompiled and bundled.
+Full API and CLI reference: https://jadenzaleski.github.io/bible-translations/
+
+## Supported translations
 
 | Translation | Abbreviation | Copyright     |
 |-------------|--------------|---------------|

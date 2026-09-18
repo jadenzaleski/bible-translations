@@ -19,12 +19,24 @@ Thanks for your interest in contributing.
    ```bash
    pytest
    ```
-5. Commit with the following conventional style:
-   * `feat:` add feature  
-   * `fix:` resolve bug  
-   * `docs:` update documentation  
-6. Push and open a Pull Request to `main`.
+5. Commit with [Conventional Commits](https://www.conventionalcommits.org/) style — this repo's
+   releases are automated with release-please, which reads these prefixes to decide version bumps
+   and changelog entries:
+   * `feat:` a new feature (minor version bump)
+   * `fix:` a bug fix (patch version bump)
+   * `docs:` documentation only
+   * `chore:` maintenance with no user-facing effect
+   * `refactor:` code change that neither fixes a bug nor adds a feature
+   * `test:` adding or fixing tests
+   * `ci:` CI/CD configuration
+   * `build:` build system or dependency changes
+   * `perf:` a performance improvement
+   * A `!` after the type (e.g. `feat!:`) or a `BREAKING CHANGE:` footer triggers a major version bump.
+6. Push and open a Pull Request to `master`.
 7. Link related issues (e.g., `Closes #42`).
+
+PRs are merged with **Squash and merge** — your PR title becomes the commit message on `master`,
+so it must itself follow Conventional Commits.
 
 ## Guidelines
 * Keep PRs small and focused.
