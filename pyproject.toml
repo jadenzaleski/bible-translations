@@ -1,0 +1,87 @@
+[project]
+name = "bible-translations"
+version = "0.1.0" # MUST ALSO CHANGE IN constants.py
+description = "A Python package for discovering, fetching, and working with publicly available Bible translations and translation metadata."
+authors = [
+    { name = "Jaden Zaleski", email = "jadenzaleski@icloud.com" },
+]
+maintainers = [
+    { name = "Jaden Zaleski", email = "jadenzaleski@icloud.com" },
+]
+readme = { file = "README.md", content-type = "text/markdown" }
+requires-python = ">=3.14"
+dependencies = [
+    "aiohttp",
+    "beautifulsoup4",
+    "typing-extensions",
+    "click",
+    "rich",
+]
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
+keywords = [
+    "bible",
+    "translation",
+    "holy",
+    "scrape",
+    "fetch"
+]
+# https://pypi.org/classifiers/
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Religion",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.14",
+]
+
+[project.urls]
+Homepage = "https://github.com/jadenzaleski/bible-translations"
+Documentation = "https://github.com/jadenzaleski/bible-translations/wiki"
+Issues = "https://github.com/jadenzaleski/bible-translations/issues"
+Changelog = "https://github.com/jadenzaleski/bible-translations/releases"
+
+[project.scripts]
+bt = "bible_translations.cli:main"
+bible-translations = "bible_translations.cli:main"
+
+[build-system]
+requires = [
+    "setuptools>=65",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+    "ruff",
+    "build"
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "W",
+    "F",
+    "I"
+]
+
+[tool.ruff.format]
+line-ending = "lf"
