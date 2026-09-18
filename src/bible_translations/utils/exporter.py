@@ -18,14 +18,14 @@ from bible_translations.utils.logger import logger
 class Exporter:
     """Export Bible translations to various formats."""
 
-    def __init__(self, output_dir: Path = "exports"):
+    def __init__(self, output_dir: str | Path = "exports"):
         """
         Initialize the exporter.
 
         :param output_dir: Directory to save exported files
         """
-        self.output_dir = output_dir
-        self.output_dir.mkdir(exist_ok=True)
+        self.output_dir = Path(output_dir)
+        self.output_dir.mkdir(parents=True, exist_ok=True)
 
     def export(
         self,

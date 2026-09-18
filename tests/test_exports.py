@@ -12,6 +12,13 @@ from bible_translations.translations.kjv import KJV
 from bible_translations.utils.exporter import Exporter
 
 
+def test_exporter_accepts_string_output_dir(tmp_path):
+    # The CLI relies on the default (string) output_dir, which must be coerced to a Path.
+    exporter = Exporter(output_dir=str(tmp_path / "out"))
+    assert exporter.output_dir == tmp_path / "out"
+    assert exporter.output_dir.is_dir()
+
+
 def test_export_flat_json(tmp_path):
     info = Info(translation="King James Version", abbreviation="KJV", language="English", copyright="Public Domain")
     book = Book(

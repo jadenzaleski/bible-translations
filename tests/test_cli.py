@@ -1,7 +1,27 @@
+from pathlib import Path
+from unittest.mock import AsyncMock, patch
+
+from bs4 import BeautifulSoup
 from click.testing import CliRunner
 
 from bible_translations.cli import cli
 from bible_translations.constants import VERSION
+
+FIXTURES_DIR = Path(__file__).parent / "fixtures" / "bible_gateway"
+
+
+def test_bt_verse_exports_zip_end_to_end(tmp_path):
+    """Run the real verse command with the network mocked; exercises the default Exporter path."""
+    html = (FIXTURES_DIR / "kjv_john_3_16.html").read_text(encoding="utf-8")
+    runner = CliRunner()
+    with runner.isolated_filesystem(temp_dir=tmp_path):
+        with patch(
+            "bible_translations.utils.fetch.bible_gateway.BibleGatewayClient.fetch",
+            new=AsyncMock(return_value=BeautifulSoup(html, "html.parser")),
+        ):
+            result = runner.invoke(cli, ["verse", "John 3:16", "--output", "john_3_16", "--flat"])
+        assert result.exit_code == 0, result.output
+        assert Path("exports/john_3_16.zip").exists()
 
 
 def test_bt():
