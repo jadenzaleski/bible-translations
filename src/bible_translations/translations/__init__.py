@@ -1,9 +1,17 @@
 from .asv import ASV
+from .darby import DARBY
+from .dra import DRA
 from .kjv import KJV
+from .web import WEB
+from .ylt import YLT
 
 TRANSLATIONS = {
     "KJV": KJV,
     "ASV": ASV,
+    "WEB": WEB,
+    "YLT": YLT,
+    "DARBY": DARBY,
+    "DRA": DRA,
 }
 
 

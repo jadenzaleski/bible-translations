@@ -37,10 +37,16 @@ Full API and CLI reference: https://jadenzaleski.github.io/bible-translations/
 
 ## Supported translations
 
-| Translation | Abbreviation | Copyright     |
-|-------------|--------------|---------------|
-| KJV         | KJV          | Public Domain |
-| ASV         | ASV          | Public Domain |
+| Translation                        | Abbreviation | Copyright     |
+|------------------------------------|--------------|---------------|
+| King James Version                 | KJV          | Public Domain |
+| American Standard Version          | ASV          | Public Domain |
+| World English Bible                | WEB          | Public Domain |
+| Young's Literal Translation        | YLT          | Public Domain |
+| Darby Translation                  | DARBY        | Public Domain |
+| Douay-Rheims 1899 American Edition | DRA          | Public Domain |
+
+Only public-domain translations are supported; see the [disclaimer](DISCLAIMER.md).
 
 ## Install
 
