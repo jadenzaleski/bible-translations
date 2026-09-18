@@ -3,10 +3,6 @@ site_description: A Python package and CLI for fetching Bible translations on de
 site_url: https://jadenzaleski.github.io/bible-translations/
 repo_url: https://github.com/jadenzaleski/bible-translations
 
-# Internal planning docs live under docs/superpowers/ and are not part of the site.
-exclude_docs: |
-  superpowers/
-
 theme:
   name: material
   palette:

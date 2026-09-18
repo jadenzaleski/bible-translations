@@ -32,4 +32,18 @@ verse = kjv.get_verse("John", 3, 16)
 print(verse.text)
 ```
 
+## Supported translations
+
+| Translation                        | Abbreviation |
+|------------------------------------|--------------|
+| King James Version                 | `KJV`        |
+| American Standard Version          | `ASV`        |
+| World English Bible                | `WEB`        |
+| Young's Literal Translation        | `YLT`        |
+| Darby Translation                  | `DARBY`      |
+| Douay-Rheims 1899 American Edition | `DRA`        |
+
+All are public domain. Pass the abbreviation with `--translation` / `-t` on the CLI, or to
+`get_translation()` in the API.
+
 See the [CLI Reference](cli.md) and [API Reference](api.md) for full details.
