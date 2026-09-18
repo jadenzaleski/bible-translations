@@ -67,6 +67,7 @@ where = ["src"]
 dev = [
     "pytest",
     "pytest-asyncio",
+    "pytest-rerunfailures",
     "ruff",
     "build"
 ]
@@ -74,6 +75,9 @@ dev = [
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
+markers = [
+    "live: exercises the real network (BibleGateway) — slower and can be flaky.",
+]
 
 [tool.ruff]
 line-length = 120

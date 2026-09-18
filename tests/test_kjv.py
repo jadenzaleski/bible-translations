@@ -4,6 +4,7 @@ from bible_translations.exceptions import BookNotFoundError, ChapterNotFoundErro
 from bible_translations.translations.kjv import KJV
 
 
+@pytest.mark.live
 @pytest.mark.asyncio
 async def test_aget_verse_john_3_16():
     kjv = KJV()
@@ -16,6 +17,7 @@ async def test_aget_verse_john_3_16():
     assert verse.number == 16
 
 
+@pytest.mark.live
 @pytest.mark.asyncio
 async def test_aget_verse_amos_9_8():
     kjv = KJV()
@@ -29,6 +31,7 @@ async def test_aget_verse_amos_9_8():
     assert verse.number == 8
 
 
+@pytest.mark.live
 @pytest.mark.asyncio
 async def test_aget_verse_invalid_book():
     kjv = KJV()
@@ -36,6 +39,7 @@ async def test_aget_verse_invalid_book():
         await kjv.aget_verse(book_name="FakeBook", chapter_number=1, verse_number=1)
 
 
+@pytest.mark.live
 @pytest.mark.asyncio
 async def test_aget_verse_invalid_chapter():
     kjv = KJV()
@@ -43,6 +47,7 @@ async def test_aget_verse_invalid_chapter():
         await kjv.aget_verse(book_name="John", chapter_number=50, verse_number=1)
 
 
+@pytest.mark.live
 @pytest.mark.asyncio
 async def test_aget_verse_invalid_verse():
     kjv = KJV()
@@ -50,6 +55,7 @@ async def test_aget_verse_invalid_verse():
         await kjv.aget_verse(book_name="John", chapter_number=3, verse_number=999)
 
 
+@pytest.mark.live
 @pytest.mark.asyncio
 async def test_aget_chapter_john_1():
     kjv = KJV()
@@ -60,6 +66,7 @@ async def test_aget_chapter_john_1():
     assert chapter.verses[23].text == "And they which were sent were of the Pharisees."
 
 
+@pytest.mark.live
 @pytest.mark.asyncio
 async def test_aget_chapter_invalid_chapter():
     kjv = KJV()
@@ -67,6 +74,7 @@ async def test_aget_chapter_invalid_chapter():
         await kjv.aget_chapter(book_name="John", chapter_number=85)
 
 
+@pytest.mark.live
 @pytest.mark.asyncio
 async def test_aget_chapter_invalid_book():
     kjv = KJV()
@@ -74,6 +82,7 @@ async def test_aget_chapter_invalid_book():
         await kjv.aget_chapter(book_name="Johnny", chapter_number=85)
 
 
+@pytest.mark.live
 @pytest.mark.asyncio
 async def test_aget_book_john():
     kjv = KJV()
@@ -83,6 +92,7 @@ async def test_aget_book_john():
     assert book.chapters[-1].number == 21
 
 
+@pytest.mark.live
 @pytest.mark.asyncio
 async def test_aget_book_invalid_book():
     kjv = KJV()
@@ -90,6 +100,7 @@ async def test_aget_book_invalid_book():
         await kjv.aget_book(name="Johnny")
 
 
+@pytest.mark.live
 @pytest.mark.asyncio
 async def test_aget_books():
     kjv = KJV()
@@ -104,6 +115,7 @@ async def test_aget_books():
         assert len(b.chapters) >= 1
 
 
+@pytest.mark.live
 @pytest.mark.asyncio
 async def test_aget_selection_matthew():
     kjv = KJV()
@@ -120,6 +132,7 @@ async def test_aget_selection_matthew():
     )
 
 
+@pytest.mark.live
 @pytest.mark.asyncio
 async def test_aget_selection_mode_ref():
     kjv = KJV()
@@ -136,6 +149,7 @@ async def test_aget_selection_mode_ref():
     )
 
 
+@pytest.mark.live
 @pytest.mark.asyncio
 async def test_aget_selection_mode_ref_multi_book():
     kjv = KJV()
@@ -153,6 +167,7 @@ async def test_aget_selection_mode_ref_multi_book():
     )
 
 
+@pytest.mark.live
 @pytest.mark.asyncio
 async def test_aget_selection_invalid_mode_ref():
     kjv = KJV()
@@ -163,6 +178,7 @@ async def test_aget_selection_invalid_mode_ref():
         await kjv.aget_selection(start_ref="John 1-2", end_ref="Genesis -3:4")
 
 
+@pytest.mark.live
 @pytest.mark.asyncio
 async def test_aget_selection_invalid():
     kjv = KJV()

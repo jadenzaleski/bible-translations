@@ -9,6 +9,7 @@ from bible_translations.translations.kjv import KJV
 from bible_translations.utils.exporter import Exporter
 
 
+@pytest.mark.live
 @pytest.mark.asyncio
 async def test_export_single_verse(tmp_path):
     kjv = KJV()
