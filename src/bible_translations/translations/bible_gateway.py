@@ -239,7 +239,7 @@ class BibleGatewayTranslation(Translation):
         for sc in verse_span.select("span.small-caps"):
             sc.replace_with(sc.get_text())
 
-        verse_text = verse_span.get_text()
+        verse_text = verse_span.get_text().strip()
         return Verse(number=verse_number, text=verse_text)
 
     async def _aget_selection_range(
