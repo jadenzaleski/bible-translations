@@ -1,6 +1,6 @@
 [project]
 name = "bible-translations"
-version = "0.1.0"
+version = "1.0.0-rc.1"
 description = "A Python package for discovering, fetching, and working with publicly available Bible translations and translation metadata."
 authors = [
     { name = "Jaden Zaleski", email = "jadenzaleski@icloud.com" },
