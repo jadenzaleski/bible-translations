@@ -71,6 +71,12 @@ dev = [
     "ruff",
     "build"
 ]
+docs = [
+    "mkdocs<2",
+    "mkdocs-material",
+    "mkdocstrings[python]",
+    "mkdocs-click"
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

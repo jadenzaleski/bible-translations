@@ -1,0 +1,44 @@
+site_name: bible-translations
+site_description: A Python package and CLI for fetching Bible translations on demand.
+site_url: https://jadenzaleski.github.io/bible-translations/
+repo_url: https://github.com/jadenzaleski/bible-translations
+
+# Internal planning docs live under docs/superpowers/ and are not part of the site.
+exclude_docs: |
+  superpowers/
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+nav:
+  - Home: index.md
+  - CLI Reference: cli.md
+  - API Reference: api.md
+  - Changelog: changelog.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.superfences
+  - pymdownx.snippets:
+      check_paths: true
+  - mkdocs-click
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_source: true
+            docstring_style: sphinx
