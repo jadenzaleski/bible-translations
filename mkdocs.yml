@@ -6,16 +6,16 @@ repo_url: https://github.com/jadenzaleski/bible-translations
 theme:
   name: material
   palette:
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
+    # No `media` keys: ignores OS light/dark preference and always loads slate (dark) first.
+    # The toggle still lets a visitor switch to light manually.
+    - scheme: slate
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
+    - scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
 
 nav:
   - Home: index.md
