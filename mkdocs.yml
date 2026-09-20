@@ -5,6 +5,7 @@ repo_url: https://github.com/jadenzaleski/bible-translations
 
 theme:
   name: material
+  favicon: img/favicon.ico
   palette:
     - scheme: slate
       toggle:
