@@ -26,8 +26,7 @@
   <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/jadenzaleski/bible-translations?style=flat-square">
 </p>
 
-A Python package and CLI for fetching Bible translations on demand. This project does not
-bundle or redistribute any Bible text — it fetches publicly available, public-domain
+A Python package and CLI for fetching Bible translations on demand. Fetches publicly available 
 translations from [BibleGateway](https://www.biblegateway.com) at request time, either as
 Python objects (via the API) or as exported JSON files (via the CLI).
 
@@ -45,8 +44,6 @@ Full API and CLI reference: https://jadenzaleski.github.io/bible-translations/
 | Young's Literal Translation        | YLT          | Public Domain |
 | Darby Translation                  | DARBY        | Public Domain |
 | Douay-Rheims 1899 American Edition | DRA          | Public Domain |
-
-Only public-domain translations are supported; see the [disclaimer](DISCLAIMER.md).
 
 ## Install
 
@@ -151,16 +148,15 @@ In any command, you can specify the translation, output filename, and format:
 
 ## Changelog
 
-You can find all the change information [here](CHANGELOG.md).
+You can find all the change information [here](https://github.com/jadenzaleski/bible-translations/blob/master/CHANGELOG.md).
 
 ## Contributing
 
 Be sure to check out the [bible-translations project](https://github.com/users/jadenzaleski/projects/7) to see where you
 can help!
 
-Guidelines for contributing can be found [here](CONTRIBUTING.md).
+Guidelines for contributing can be found [here](https://github.com/jadenzaleski/bible-translations/blob/master/CONTRIBUTING.md).
 
 ## Disclaimer
 
-Please read our disclaimer [here](DISCLAIMER.md).
-
+Please read our disclaimer [here](https://github.com/jadenzaleski/bible-translations/blob/master/DISCLAIMER.md).

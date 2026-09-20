@@ -6,8 +6,6 @@ repo_url: https://github.com/jadenzaleski/bible-translations
 theme:
   name: material
   palette:
-    # No `media` keys: ignores OS light/dark preference and always loads slate (dark) first.
-    # The toggle still lets a visitor switch to light manually.
     - scheme: slate
       toggle:
         icon: material/brightness-4
