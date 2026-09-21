@@ -47,18 +47,32 @@ Full API and CLI reference: https://jadenzaleski.github.io/bible-translations/
 
 ## Install
 
-You can Install from PyPI
+Install the CLI with [uv](https://docs.astral.sh/uv/):
+
+```bash
+uv tool install bible-translations
+```
+
+Install with [pip](https://pip.pypa.io/en/stable/):
 
 ```bash
 pip install bible-translations 
 ```
 
-The package provides a CLI command:
+Run:
 
 ```bash
 bt
 # or
 bible-translations
+```
+
+> If `bt` isn't found afterward, run `uv tool update-shell` and open a new terminal.
+
+To use `bible-translations` as a library, add it to your own project instead:
+
+```bash
+uv add bible-translations
 ```
 
 ### Install from local source

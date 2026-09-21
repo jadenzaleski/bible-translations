@@ -10,8 +10,32 @@ the CLI).
 
 ## Install
 
+Install the CLI with [uv](https://docs.astral.sh/uv/):
+
+```bash
+uv tool install bible-translations
+```
+
+Install with [pip](https://pip.pypa.io/en/stable/):
+
 ```bash
 pip install bible-translations
+```
+
+Run:
+
+```bash
+bt
+# or
+bible-translations
+```
+
+> If `bt` isn't found afterward, run `uv tool update-shell` and open a new terminal.
+
+To use the Python API instead, add `bible-translations` to your own project:
+
+```bash
+uv add bible-translations
 ```
 
 ## Quickstart
