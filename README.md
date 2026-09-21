@@ -19,14 +19,9 @@
   <a href="https://pypi.org/project/bible-translations/">
     <img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dm/bible-translations?style=flat-square">
   </a>
-  <a href="LICENSE">
-    <img alt="License" src="https://img.shields.io/github/license/jadenzaleski/bible-translations?style=flat-square">
-  </a>
-  <img alt="Github Created At" src="https://img.shields.io/github/created-at/jadenzaleski/bible-translations?style=flat-square&color=orange">
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/jadenzaleski/bible-translations?style=flat-square">
 </p>
 
-A Python package and CLI for fetching Bible translations on demand. Fetches publicly available 
+A Python package ([PyPI](https://pypi.org/project/bible-translations/)) and CLI for fetching Bible translations on demand. Fetches publicly available 
 translations from [BibleGateway](https://www.biblegateway.com) at request time, either as
 Python objects (via the API) or as exported JSON files (via the CLI).
 
@@ -36,14 +31,14 @@ Full API and CLI reference: https://jadenzaleski.github.io/bible-translations/
 
 ## Supported translations
 
-| Translation                        | Abbreviation | Copyright     |
-|------------------------------------|--------------|---------------|
-| King James Version                 | KJV          | Public Domain |
-| American Standard Version          | ASV          | Public Domain |
-| World English Bible                | WEB          | Public Domain |
-| Young's Literal Translation        | YLT          | Public Domain |
-| Darby Translation                  | DARBY        | Public Domain |
-| Douay-Rheims 1899 American Edition | DRA          | Public Domain |
+| Translation                        | Abbreviation |
+|------------------------------------|--------------|
+| King James Version                 | KJV          |
+| American Standard Version          | ASV          |
+| World English Bible                | WEB          |
+| Young's Literal Translation        | YLT          |
+| Darby Translation                  | DARBY        |
+| Douay-Rheims 1899 American Edition | DRA          |
 
 ## Install
 
