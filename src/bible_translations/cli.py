@@ -24,6 +24,7 @@ customSpinner = SpinnerColumn(spinner_name="dots10", finished_text="[green]✓[/
 def cli(ctx: click.Context):
     """Bible Translations CLI - A tool to fetch and export Bible translations."""
     if ctx.invoked_subcommand is None:
+        print()
         display_ansi_art()
         print()
         click.echo(ctx.get_help())
