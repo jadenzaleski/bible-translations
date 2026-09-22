@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.0.0](https://github.com/jadenzaleski/bible-translations/compare/v1.0.0-rc.1...v1.0.0) (2026-09-22)
+
+
+### Bug Fixes
+
+* ensure blank line before ANSI art in CLI output ([41d12f3](https://github.com/jadenzaleski/bible-translations/commit/41d12f303653ba1bc7bf0513e1478f97a008bd78))
+
+
+### Documentation
+
+* default the docs site to dark mode ([0faf328](https://github.com/jadenzaleski/bible-translations/commit/0faf328d76980a8af38397862d6ad140bbe27f09))
+* point the docs theme at the custom favicon ([f681f52](https://github.com/jadenzaleski/bible-translations/commit/f681f52569be2f5c6a80e992fb42e468eb73ffec))
+* remove copyright column from translations table and simplify changelog structure ([cf4fe2f](https://github.com/jadenzaleski/bible-translations/commit/cf4fe2fd491088e0aa37912d70d4cf98c08e619a))
+* update installation instructions to include `uv` CLI commands ([2136361](https://github.com/jadenzaleski/bible-translations/commit/2136361923c6273aeb5e3d4c946467591873ef45))
+* update README links and add favicon to docs site ([e54433a](https://github.com/jadenzaleski/bible-translations/commit/e54433a0708c68f829aad71bb24dbc884016d8ce))
+
+
+### Miscellaneous
+
+* update project metadata and dependencies for production readiness ([f1abda7](https://github.com/jadenzaleski/bible-translations/commit/f1abda7bfca3b13cb3571531623eb49f1bccbc20))
+
 ## [1.0.0-rc.1](https://github.com/jadenzaleski/bible-translations/compare/v0.1.0...v1.0.0-rc.1) (2026-09-18)
 
 
