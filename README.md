@@ -51,7 +51,7 @@ uv tool install bible-translations
 Install with [pip](https://pip.pypa.io/en/stable/):
 
 ```bash
-pip install bible-translations 
+pip install bible-translations
 ```
 
 Run:
