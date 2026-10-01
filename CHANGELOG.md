@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/jadenzaleski/bible-translations/compare/v1.0.0...v1.0.1) (2026-10-01)
+
+
+### Documentation
+
+* enhance README with CD/docs badges and Homebrew installation steps ([02a558e](https://github.com/jadenzaleski/bible-translations/commit/02a558e780324f7c0946c5fc7d143766e875853a))
+
 ## [1.0.0](https://github.com/jadenzaleski/bible-translations/compare/v1.0.0-rc.1...v1.0.0) (2026-09-22)
 
 
